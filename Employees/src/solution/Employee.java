@@ -1,27 +1,17 @@
 package solution;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Employee {
 	private int EmpID;
 	private int ProjectID;
 	private Date DateFrom;
 	private Date DateTo;
-	private long time;
 	
 	public Employee() {
 		super();
 	}
-	public Employee(int empID, int projectID, long time) {
-		super();
-		EmpID = empID;
-		ProjectID = projectID;
-		this.time = time;
-	}
+
 	public Employee(int empID, int projectID, Date dateFrom, Date dateTo) {
 		super();
 		EmpID = empID;
@@ -29,12 +19,7 @@ public class Employee {
 		DateFrom = dateFrom;
 		DateTo = dateTo;
 	}
-	public long getTime() {
-		return time;
-	}
-	public void setTime(long time) {
-		this.time = time;
-	}
+
 	public int getEmpID() {
 		return EmpID;
 	}

@@ -1,16 +1,9 @@
 package solution;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class Pair implements Comparable<Object> {
 	private int firstEmployee;
 	private int secondEmployee;
 	private long timeTogether;
-	
-	
 	
 	public Pair() {
 		super();
@@ -44,41 +37,6 @@ public class Pair implements Comparable<Object> {
 	public String toString() {
 		return "Pair [firstEmployee=" + firstEmployee + ", secondEmployee=" + secondEmployee + ", timeTogether="
 				+ timeTogether + "]";
-	}
-	
-	public List<Pair> coupleEmployees(List<Employee> allEmployees) {
-		AtomicBoolean newPair = new AtomicBoolean(true);
-		List<Pair> pairs = new ArrayList<>();
-		for (Employee first : allEmployees) {
-			for (Employee second : allEmployees) {
-				if (first.getEmpID() == second.getEmpID()) {
-					continue;
-				}
-				if (first.getProjectID() != second.getProjectID()) {
-					continue;
-				}
-				if (first.compareTo(second) > 0 || second.compareTo(first) > 0) {
-					continue;
-				}
-				pairs.forEach(pair -> {
-					if ((pair.getFirstEmployee() == first.getEmpID() && pair.getSecondEmployee() == second.getEmpID()) ||
-							(pair.getFirstEmployee() == second.getEmpID() && pair.getSecondEmployee() == first.getEmpID())) {
-						pair.setTimeTogether(pair.getTimeTogether() + first.dateDiff(second));
-						newPair.set(false);
-					}
-				});
-				
-				if (newPair.get()) {
-					Pair pair = new Pair(first.getEmpID(), second.getEmpID(), first.dateDiff(second));
-					pairs.add(pair);
-				}
-			}
-			
-		}
-		
-		Collections.sort(pairs);
-		
-		return pairs;
 	}
 	
 	@Override
