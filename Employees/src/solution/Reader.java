@@ -10,20 +10,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Reader {
-    public List<Employee> readFile(String fileName) throws ParseException, FileNotFoundException{
-    	List<Employee> employees = new ArrayList<Employee>();
+	public List<Employee> readFile(String fileName) throws ParseException, FileNotFoundException {
+		List<Employee> employees = new ArrayList<Employee>();
 		Scanner s = new Scanner(new File(fileName));
 
 		while (s.hasNext()) {
-			String[] fields = s.nextLine().split(", ");
-			
+			String[] fields = s.nextLine().split(",");
+
 			int empID = Integer.parseInt(fields[0]);
 			int projectID = Integer.parseInt(fields[1]);
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Date dateFrom = formatter.parse(fields[2]);
 			Date dateTo = new Date();
 			if (fields[3].equals("NULL")) {
-				long millis=System.currentTimeMillis();  
+				long millis = System.currentTimeMillis();
 				dateTo.setTime(millis);
 			} else {
 				dateTo = formatter.parse(fields[3]);
@@ -31,7 +31,7 @@ public class Reader {
 			Employee employee = new Employee(empID, projectID, dateFrom, dateTo);
 			employees.add(employee);
 		}
-		
+
 		return employees;
-    }
+	}
 }
